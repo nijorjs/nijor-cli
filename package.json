@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "nijor": "./bin/cli.js"
+    "nijor": "bin/cli.js"
   },
-  "author": "",
+  "author": "DebAxom",
   "license": "ISC",
   "dependencies": {
     "@nijor/nijor": "^1.6.0",
@@ -24,5 +24,17 @@
     "rollup": "^3.7.2",
     "rollup-plugin-includepaths": "^0.2.4",
     "sass": "^1.56.2"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nijorjs/nijor-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nijorjs/nijor-cli/issues"
+  },
+  "homepage": "https://github.com/nijorjs/nijor-cli#readme"
 }
