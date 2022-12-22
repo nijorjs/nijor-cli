@@ -25,9 +25,6 @@
     "rollup-plugin-includepaths": "^0.2.4",
     "sass": "^1.56.2"
   },
-  "directories": {
-    "test": "test"
-  },
   "devDependencies": {},
   "repository": {
     "type": "git",
