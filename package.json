@@ -1,0 +1,28 @@
+{
+  "name": "@nijor/cli",
+  "version": "1.0.0",
+  "description": "The cli for Nijor Apps !",
+  "main": "bin/cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "nijor": "./bin/cli.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nijor/nijor": "^1.6.0",
+    "@nijor/nijor-rollup-plugin": "^1.6.1",
+    "@rollup/plugin-commonjs": "^23.0.4",
+    "@rollup/plugin-image": "^3.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.2.1",
+    "chalk": "^4.1.1",
+    "chokidar": "^3.5.3",
+    "isomorphic-git": "^1.21.0",
+    "rollup": "^3.7.2",
+    "rollup-plugin-includepaths": "^0.2.4",
+    "sass": "^1.56.2"
+  }
+}

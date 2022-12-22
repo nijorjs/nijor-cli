@@ -1,0 +1,17 @@
+{
+    "app":{
+        "name":"app"
+    },
+    "module":{
+        "input":"src/App.js",
+        "output":"app/assets/modules"
+    },
+    "styles":{
+        "input":"src/styles/style.scss",
+        "output":"app/assets/style.css"
+    },
+    "server":{
+        "port":3000,
+        "appdir":"app"
+    }
+}
