@@ -14,7 +14,7 @@ module.exports = async function(NijorConfigFile,watch){
             const watcher = chokidar.watch(path.join(process.cwd(),'src'));
             console.print('Watching for changes in the src/ folder .....',[64,226,73]);
             watcher.on('change',async _=> {
-                await compileNijorFiles({minify:true});
+                await compileNijorFiles({minify:false});
                 console.print('Watching for changes in the src/ folder .....',[64,226,73]);
             });
         }
