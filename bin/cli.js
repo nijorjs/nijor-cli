@@ -20,7 +20,7 @@ const commandsMap = {
     "build": ()=> buildProject(NijorConfigFile),
     "compile": ()=> compileProject(NijorConfigFile,userArgs[1]),
     "serve": ()=> serveProject(),
-    "-v": ()=> console.log('v1.2'),
+    "-v": ()=> console.log('v1.3'),
     "default": ()=> DefaultCommand()
 }
 
