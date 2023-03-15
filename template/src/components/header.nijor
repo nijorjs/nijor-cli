@@ -40,7 +40,7 @@
     <div class="container">
         <a n:route="/"><img src="{Logo}"/></a>
         <div class="nav-bar">
-            <a href="https://github.com/nijor" class="nav-link">Docs</a>
+            <a href="https://nijorjs.github.io/docs" class="nav-link">Docs</a>
         </div>
     </div>
 </template>

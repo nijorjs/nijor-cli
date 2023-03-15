@@ -1,6 +1,6 @@
 {
   "name": "@nijor/cli",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "The cli for Nijor Apps !",
   "main": "bin/cli.js",
   "scripts": {
@@ -20,6 +20,7 @@
     "@rollup/plugin-terser": "^0.2.1",
     "chalk": "^4.1.1",
     "chokidar": "^3.5.3",
+    "dotenv": "^16.0.3",
     "isomorphic-git": "^1.21.0",
     "rollup": "^3.7.2",
     "rollup-plugin-includepaths": "^0.2.4",
