@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-require('dotenv').config();
 const path = require('path');
 const chalk = require('chalk');
 const userArgs = process.argv.slice(2);
@@ -21,13 +20,13 @@ const commandsMap = {
     "build": ()=> buildProject(NijorConfigFile),
     "compile": ()=> compileProject(NijorConfigFile,userArgs[1]),
     "serve": ()=> serveProject(),
-    "-v": ()=> console.log('v1.7'),
+    "-v": ()=> console.log('v1.8'),
     "default": ()=> DefaultCommand()
 }
 
 function DefaultCommand(){
     console.print("Welcome to the Nijor CLI !",[0,195,255]);
-    console.print("version : 1.7",[0,195,255]);
+    console.print("version : 1.8",[0,195,255]);
 }
 
 try {
