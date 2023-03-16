@@ -20,13 +20,13 @@ const commandsMap = {
     "build": ()=> buildProject(NijorConfigFile),
     "compile": ()=> compileProject(NijorConfigFile,userArgs[1]),
     "serve": ()=> serveProject(),
-    "-v": ()=> console.log('v1.8'),
+    "-v": ()=> console.log('v1.9'),
     "default": ()=> DefaultCommand()
 }
 
 function DefaultCommand(){
     console.print("Welcome to the Nijor CLI !",[0,195,255]);
-    console.print("version : 1.8",[0,195,255]);
+    console.print("version : 1.9",[0,195,255]);
 }
 
 try {
