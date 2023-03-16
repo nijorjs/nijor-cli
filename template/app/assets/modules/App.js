@@ -1,4 +1,24 @@
-class component{
+function getAttributes(el) {
+    /*
+    This function returns the key-value-pair of an HTML element.
+    Example: 
+        HTML: <card name="Test" price="Test"></card>
+        JS: document.getElementsByName('card')[0].getAttributes; will return {name:'Test',price:'Test'}
+    */
+    let nodes = [], values = [];
+    for (let att, i = 0, atts = el.attributes, n = atts.length; i < n; i++) {
+        att = atts[i];
+        nodes.push(att.nodeName);
+        values.push(att.nodeValue);
+    }
+    nodes.push('_text_');
+    values.push(el.innerHTML);
+    let keys = nodes;
+    let Values = values;
+    let allAttributes = {};
+    keys.forEach((key, i) => allAttributes[key] = Values[i]);
+    return (allAttributes);
+}class component{
     constructor(template,callback) {
         this.template = template;
         this.cb = callback;
@@ -10,7 +30,7 @@ class component{
         let to_be_replaced = new RegExp(`(<${this.name}[^>]+>|<${this.name}>)`);
         let element = document.getElementsByTagName(this.name)[0];
         if(document.getElementsByTagName(this.name).length===0) return;
-        let allSpecs = element.getAttributes();
+        let allSpecs = getAttributes(element);
         try {
             element.innerHTML="";
         } catch (error) {} 
@@ -18,12 +38,12 @@ class component{
             let result = await this.template(allSpecs);
             element.parentElement.innerHTML = element.parentElement.innerHTML.replace(to_be_replaced,result);
             await this.cb();
-            this.run();
+            await this.run();
         } catch (error) {
             let result = await this.template(allSpecs);
             document.body.innerHTML = document.body.innerHTML.replace(to_be_replaced,result);
             await this.cb();
-            this.run();
+            await this.run();
         }
     }
 }
@@ -32,29 +52,6 @@ class component{
 // window.nijorfunc is an object that stores all the events like on:click="clicked()" (on:{event}="func()") 
 window.nijor={ component };
 window.nijorfunc={};
-
-Object.prototype.getAttributes = function () {
-    /*
-    This function returns the key-value-pair of an HTML element.
-    Example: 
-        HTML: <card name="Test" price="Test"></card>
-        JS: document.getElementsByName('card')[0].getAttributes; will return {name:'Test',price:'Test'}
-    */
-    let el = this;
-    let nodes = [], values = [];
-    for (let att, i = 0, atts = el.attributes, n = atts.length; i < n; i++) {
-        att = atts[i];
-        nodes.push(att.nodeName);
-        values.push(att.nodeValue);
-    }
-    nodes.push('_text_');
-    values.push(this.innerHTML);
-    let keys = nodes;
-    let Values = values;
-    let allAttributes = {};
-    keys.forEach((key, i) => allAttributes[key] = Values[i]);
-    return (allAttributes);
-};
 
 window.location.query = function(){
     // this function returns the url parameters.
@@ -69,8 +66,6 @@ window.location.query = function(){
     }
     return params;
 };
-
-
 
 window.nijor.routes = {
     "/": () => { },
@@ -119,7 +114,7 @@ window.addEventListener('hashchange',async function(){
         hash = "#";
     }
     await window.nijor.renderHashRoute(path,hash);
-    window.nijor.emitEvent('navigate',{path,hash});
+    await window.nijor.emitEvent('navigate',{path,hash});
 });
 
 window.nijor.emitEvent = async function(eventName,data={}){
@@ -180,10 +175,10 @@ var img = "data:image/svg+xml,%3c!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 20010904//
 
 var $header = new window.nijor.component(async function(){
                   
-                  return(`<div class="container" n-scope="mDPQeQSMj">
-        <a n-scope="mDPQeQSMj" onclick="return window.nijor.redirect('/')" href="/"><img src="${img}" n-scope="mDPQeQSMj"></a>
-        <div class="nav-bar" n-scope="mDPQeQSMj">
-            <a href="https://github.com/nijor" class="nav-link" n-scope="mDPQeQSMj">Docs</a>
+                  return(`<div class="container" n-scope="0y44198ndGfTnXntm">
+        <a n-scope="0y44198ndGfTnXntm" onclick="return window.nijor.redirect(this.href)" href="/"><img src="${img}" n-scope="0y44198ndGfTnXntm"></a>
+        <div class="nav-bar" n-scope="0y44198ndGfTnXntm">
+            <a href="https://nijorjs.github.io/docs" class="nav-link" n-scope="0y44198ndGfTnXntm">Docs</a>
         </div>
     </div>
 `);
@@ -196,8 +191,8 @@ var $header = new window.nijor.component(async function(){
 
 var $footer = new window.nijor.component(async function(){
                   
-                  return(`<div n-scope="lDRke0S">
-        <p n-scope="lDRke0S">Nijor Template Website</p>
+                  return(`<div n-scope="FkvHrVHq1pLjFGl6cuZz">
+        <p n-scope="FkvHrVHq1pLjFGl6cuZz">Nijor Template Website</p>
     </div>
 `);
               },async function(){
@@ -209,17 +204,17 @@ var $footer = new window.nijor.component(async function(){
 
 var App = new window.nijor.component(async function(){
                   
-                  return(`<header4xluj n-scope="CZ8uaiv2L"></header4xluj>
-        <div id="n-routes" n-scope="CZ8uaiv2L"></div>
-    <footer4xluj n-scope="CZ8uaiv2L"></footer4xluj>
+                  return(`<headerah n-scope="TGsxOaQaz9BymMWg"></headerah>
+        <div id="n-routes" n-scope="TGsxOaQaz9BymMWg"></div>
+    <footerah n-scope="TGsxOaQaz9BymMWg"></footerah>
 `);
               },async function(){
                 
                 
-              $header.init('header4xluj');
+              $header.init('headerah');
               await $header.run();
             
-              $footer.init('footer4xluj');
+              $footer.init('footerah');
               await $footer.run();
             
                 
@@ -228,13 +223,13 @@ var App = new window.nijor.component(async function(){
 
 var Index = new window.nijor.component(async function(){
                   
-                  return(`<div class="main" n-scope="rqUtShO8LujRL6kB4pOO">
-        <img src="${img}" n-scope="rqUtShO8LujRL6kB4pOO">
-        <p n-scope="rqUtShO8LujRL6kB4pOO">
-            <span style="font-size: 35px; font-weight: bold;" n-scope="rqUtShO8LujRL6kB4pOO">Nijor</span>
-            <span class="tagline" n-scope="rqUtShO8LujRL6kB4pOO"> : A modern and practical web framework !</span>
+                  return(`<div class="main" n-scope="6B9Ylz263Cy">
+        <img src="${img}" n-scope="6B9Ylz263Cy">
+        <p n-scope="6B9Ylz263Cy">
+            <span style="font-size: 35px; font-weight: bold;" n-scope="6B9Ylz263Cy">Nijor</span>
+            <span class="tagline" n-scope="6B9Ylz263Cy"> : A modern and practical web framework !</span>
         </p>
-        <a n-scope="rqUtShO8LujRL6kB4pOO" onclick="return window.nijor.redirect('/welcome')" href="/welcome"><button n-scope="rqUtShO8LujRL6kB4pOO">Get Started</button></a>
+        <a n-scope="6B9Ylz263Cy" onclick="return window.nijor.redirect(this.href)" href="/welcome"><button n-scope="6B9Ylz263Cy">Get Started</button></a>
     </div>
 `);
               },async function(){
@@ -246,10 +241,10 @@ var Index = new window.nijor.component(async function(){
 
 var Welcome = new window.nijor.component(async function(){
                   
-                  return(`<div class="main" n-scope="ikCcw4ZZGPrt7KUxU">
-        <img src="${img}" n-scope="ikCcw4ZZGPrt7KUxU">
-        <span class="welcome-msg" n-scope="ikCcw4ZZGPrt7KUxU"> Welcome to the world of Nijor !</span>
-        <p n-scope="ikCcw4ZZGPrt7KUxU">Edit the src/ folder to reflect changes in this website !</p>
+                  return(`<div class="main" n-scope="uqBqDvrXzXD">
+        <img src="${img}" n-scope="uqBqDvrXzXD">
+        <span class="welcome-msg" n-scope="uqBqDvrXzXD"> Welcome to the world of Nijor !</span>
+        <p n-scope="uqBqDvrXzXD">Edit the src/ folder to reflect changes in this website !</p>
     </div>
 `);
               },async function(){
@@ -261,10 +256,10 @@ var Welcome = new window.nijor.component(async function(){
 
 var Error404 = new window.nijor.component(async function(){
                   
-                  return(`<div n-scope="zQt7uCJB5gzhwKLvKp">
-        <h1 n-scope="zQt7uCJB5gzhwKLvKp">404 Not found!</h1>
-        <p n-scope="zQt7uCJB5gzhwKLvKp">It seems as if the page you are looking for is under construction or not found. <br n-scope="zQt7uCJB5gzhwKLvKp">
-        Please go to the <a n-scope="zQt7uCJB5gzhwKLvKp" onclick="return window.nijor.redirect('/')" href="/">Home</a> page.
+                  return(`<div n-scope="nYiUSp">
+        <h1 n-scope="nYiUSp">404 Not found!</h1>
+        <p n-scope="nYiUSp">It seems as if the page you are looking for is under construction or not found. <br n-scope="nYiUSp">
+        Please go to the <a n-scope="nYiUSp" onclick="return window.nijor.redirect(this.href)" href="/">Home</a> page.
         </p>
     </div>
 `);
