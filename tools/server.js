@@ -14,7 +14,11 @@ const hostname = '127.0.0.1';
 const port = NijorJSON.server.port;
 
 const server = http.createServer((req, res) => {
-
+        const headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
+        };
+        
         const page = fs.readFileSync(path.join(staticDir,'index.html'),'utf-8');
 
         if(req.url=="/index.html"){
@@ -33,7 +37,7 @@ const server = http.createServer((req, res) => {
             if (path.extname(req.url)==='.js') {
                 res.setHeader('Content-Type', 'application/javascript');
             }
-            res.writeHead(200);
+            res.writeHead(200,headers);
             res.end(data);
         } catch (error) {
             res.statusCode = 200;
@@ -43,5 +47,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, hostname, () => {
-  console.print(`Server running at http://localhost:${port}`,[0,195,255]);
+    console.print(`Server running at http://${hostname}:${port}`,[0,195,255]);
 });
