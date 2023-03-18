@@ -7,6 +7,7 @@ const {nodeResolve} = require('@rollup/plugin-node-resolve');
 const cjs = require('@rollup/plugin-commonjs');
 const image = require('@rollup/plugin-image');
 const terser = require('@rollup/plugin-terser');
+const json = require('@rollup/plugin-json');
 const nijor = require('@nijor/nijor');
 const NijorCompiler = require('@nijor/nijor-rollup-plugin');
 const RootPath = process.cwd();
@@ -40,7 +41,8 @@ const inputOptions = {
         nodeResolve(),
         cjs(),
         NijorCompiler(compilerOptions),
-        image()
+        image(),
+        json()
     ]
 };
 const outputOptions = {
