@@ -1,6 +1,6 @@
 {
   "name": "@nijor/cli",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "The cli for Nijor Apps !",
   "main": "bin/cli.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "author": "DebAxom",
   "license": "ISC",
   "dependencies": {
-    "@nijor/nijor": "^1.8.1",
+    "@nijor/nijor": "^1.9.0",
     "@nijor/nijor-rollup-plugin": "^1.6.4",
     "@rollup/plugin-commonjs": "^23.0.4",
     "@rollup/plugin-image": "^3.0.1",

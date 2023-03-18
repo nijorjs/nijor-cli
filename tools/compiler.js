@@ -63,25 +63,14 @@ async function build(options) {
         fs.rmSync(outputOptions.dir, { recursive: true, force: true }); // Delete the modules folder from app/assets
     } catch (error) {}
 
-    const bundle = await rollup.rollup(inputOptions);
-    await bundle.write(outputOptions);
-    await bundle.close();
-
-    console.log(`Nijor: Compiled all files successfully.`);
+    try {
+        const bundle = await rollup.rollup(inputOptions);
+        await bundle.write(outputOptions);
+        await bundle.close();
+        console.log(`Nijor: Compiled all files successfully.`);
+    } catch (error) {
+        console.print(error,[255,0,0]);
+    }
 }
 
 module.exports = build;
-
-function deleteFolderRecursive(path) {
-    if( fs.existsSync(path) ) {
-        fs.readdirSync(path).forEach(function(file) {
-          let curPath = path + "/" + file;
-            if(fs.lstatSync(curPath).isDirectory()) {
-                deleteFolderRecursive(curPath);
-            } else {
-                fs.unlinkSync(curPath);
-            }
-        });
-        fs.rmdirSync(path);
-      }
-}
