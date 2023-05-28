@@ -8,8 +8,11 @@ const cjs = require('@rollup/plugin-commonjs');
 const image = require('@rollup/plugin-image');
 const terser = require('@rollup/plugin-terser');
 const json = require('@rollup/plugin-json');
+const virtual = require('./virtual.js');
 const nijor = require('@nijor/core');
 const NijorCompiler = require('@nijor/nijor-rollup-plugin');
+const {crawl} = require('./crawler.js');
+
 const RootPath = process.cwd();
 const srcPath = path.join(RootPath,'src');
 
@@ -33,24 +36,30 @@ const compilerOptions = {
     Style,
     rootdir: __dirname
 }
-const inputOptions = {
-    input: path.join(RootPath,NijorJSON.module.input),
-    preserveEntrySignatures : false,
-    plugins:[
-        includePaths(includePathOptions),
-        nodeResolve(),
-        cjs(),
-        NijorCompiler(compilerOptions),
-        image(),
-        json()
-    ]
-};
+
 const outputOptions = {
     dir: path.join(RootPath,NijorJSON.module.output),
     format:'es',
 };
 
 async function build(options) {
+
+    const inputOptions = {
+        input: 'app',
+        preserveEntrySignatures : false,
+        plugins:[
+            virtual({
+                app:`${await crawl(path.join(RootPath,'src'))}`
+            }),
+            includePaths(includePathOptions),
+            nodeResolve(),
+            cjs(),
+            NijorCompiler(compilerOptions),
+            image(),
+            json()
+        ]
+    };
+
     const cssStyle = sass.renderSync({file:path.join(RootPath,NijorJSON.styles.input),outputStyle:'compressed'});
     globalStyles = cssStyle.css.toString();
     fs.writeFileSync(compilerOptions.styleSheet,globalStyles);
