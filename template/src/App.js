@@ -1,4 +1,5 @@
 import "nijor";
+import "nijor/router";
 import App from 'App.nijor';
 
 //@Routes()
