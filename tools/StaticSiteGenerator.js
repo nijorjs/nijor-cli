@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 let Files = [];
 
+const RootPath = process.cwd();
+
 function ensureDirectoryExistence(filePath) {
     var dirname = path.dirname(filePath);
     if (fs.existsSync(dirname)) {
@@ -42,7 +44,7 @@ async function crawlDirectory(directoryPath) {
     }
 }
 
-async function getAllRoutes(){
+async function getAllRoutes(directory){
     let Routes = [];
     await crawlDirectory(path.join(directory,'pages'));
     Files.forEach(file=>{
@@ -51,8 +53,8 @@ async function getAllRoutes(){
     return Routes;
 }
 
-async function GenerateStaticSite(dir,template,script){
-    let urls = getAllRoutes();
+export async function GenerateStaticSite(dir,template,script){
+    let urls = getAllRoutes(path.join(RootPath,'src/pages'));
     for(let url of urls){
         let content = await CompilePage(template, script, url);
         url = url==="/" ? "index" : url;

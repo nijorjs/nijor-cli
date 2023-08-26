@@ -8,6 +8,7 @@ const cloneProject = require('../src/clone.js');
 const buildProject = require('../src/build.js');
 const compileProject = require('../src/compile.js');
 const serveProject = require('../src/serve.js');
+const generateStaticSite = require('../src/ssg.js');
 const cwDir = process.cwd();
 const NijorConfigFile = path.join(cwDir,'nijor.config.json');
 const TemplateDirectory = path.join(path.dirname(__dirname),'template');
@@ -20,13 +21,14 @@ const commandsMap = {
     "build": ()=> buildProject(NijorConfigFile),
     "compile": ()=> compileProject(NijorConfigFile,userArgs[1]),
     "serve": ()=> serveProject(),
-    "-v": ()=> console.log('v3.5'),
+    "ssg" : ()=> generateStaticSite(NijorConfigFile),
+    "-v": ()=> console.log('v3.6'),
     "default": ()=> DefaultCommand()
 }
 
 function DefaultCommand(){
     console.print("Welcome to the Nijor CLI !",[0,195,255]);
-    console.print("version : 3.5",[0,195,255]);
+    console.print("version : 3.6",[0,195,255]);
 }
 
 try {

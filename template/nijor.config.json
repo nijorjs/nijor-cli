@@ -13,5 +13,8 @@
     "server":{
         "port":3000,
         "appdir":"app"
+    },
+    "ssg":{
+        "dir" : "static-site"
     }
 }
