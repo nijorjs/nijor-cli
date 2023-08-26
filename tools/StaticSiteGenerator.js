@@ -40,7 +40,6 @@ async function crawlDirectory(directoryPath) {
       const filePath = path.join(directoryPath, file);
       const stats = await fs.promises.stat(filePath);
       if (stats.isFile() && path.basename(filePath)!=".nijor") Files.push(filePath);
-      if (stats.isFile() && path.basename(filePath)==".nijor") AddSlot(filePath);
       else if (stats.isDirectory()) await crawlDirectory(filePath);
     }
 }
