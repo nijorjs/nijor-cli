@@ -40,12 +40,9 @@ function virtual(modules) {
             if (id in modules)
                 return PREFIX + id;
             if (importer) {
-                const importerNoPrefix = importer.startsWith(PREFIX)
-                    ? importer.slice(PREFIX.length)
-                    : importer;
+                const importerNoPrefix = importer.startsWith(PREFIX) ? importer.slice(PREFIX.length) : importer;
                 const resolved = path__namespace.resolve(path__namespace.dirname(importerNoPrefix), id);
-                if (resolvedIds.has(resolved))
-                    return PREFIX + resolved;
+                if (resolvedIds.has(resolved)) return PREFIX + resolved;
             }
             return null;
         },

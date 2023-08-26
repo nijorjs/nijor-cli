@@ -1,4 +1,5 @@
 const CompilePage = require('./compile-page.js');
+const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
 let Files = [];
@@ -29,15 +30,15 @@ function getRouteFromFilePath(filepath){
     }
     
     if(url.match(/\[(.*?)\]/)!=null) url = Convert2Regex(url);
-    else url = `'${url}'`;
+    else url = `${url}`;
     return url;
 }
 
 async function crawlDirectory(directoryPath) {
-    const files = await fs.readdir(directoryPath);
+    const files = await fs.promises.readdir(directoryPath);
     for (const file of files) {
       const filePath = path.join(directoryPath, file);
-      const stats = await fs.stat(filePath);
+      const stats = await fs.promises.stat(filePath);
       if (stats.isFile() && path.basename(filePath)!=".nijor") Files.push(filePath);
       if (stats.isFile() && path.basename(filePath)==".nijor") AddSlot(filePath);
       else if (stats.isDirectory()) await crawlDirectory(filePath);
@@ -53,12 +54,15 @@ async function getAllRoutes(directory){
     return Routes;
 }
 
-export async function GenerateStaticSite(dir,template,script){
-    let urls = getAllRoutes(path.join(RootPath,'src/pages'));
-    for(let url of urls){
+module.exports = async function GenerateStaticSite(dir,template,script){
+    console.log(chalk.rgb(255, 243, 18)(`This process may take a few minutes. So please be patient.`));
+    let urls = getAllRoutes(path.join(RootPath,'src'));
+    for(let url of await urls){
         let content = await CompilePage(template, script, url);
         url = url==="/" ? "index" : url;
         ensureDirectoryExistence(path.join(dir,url+'.html'));
         fs.writeFileSync(path.join(dir,url+'.html'),content);
+        console.log(chalk.rgb(0, 195, 255)("Nijor: ")+chalk.rgb(44, 255, 2)(`Wrote ${url.replace('/','')+'.html'}`));
     }
+    console.log(chalk.rgb(0, 195, 255)("Build all pages successfully !"));
 }

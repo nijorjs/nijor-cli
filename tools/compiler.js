@@ -60,8 +60,9 @@ async function build(options) {
         ]
     };
 
-    const cssStyle = sass.renderSync({file:path.join(RootPath,NijorJSON.styles.input),outputStyle:'compressed'});
-    globalStyles = cssStyle.css.toString();
+    const cssStyle = sass.compile(path.join(RootPath,NijorJSON.styles.input),{style: "compressed"});
+
+    globalStyles = cssStyle.css;
     fs.writeFileSync(compilerOptions.styleSheet,globalStyles);
 
     if(options.minify === true){

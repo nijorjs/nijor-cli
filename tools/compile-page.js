@@ -47,7 +47,7 @@ async function CompilePage(template, script, url, ssr=false) {
 
             function resolveHtml() {
                 let html = dom.serialize();
-                if(!srr){
+                if(!ssr){
                     dom.window.document.body.querySelectorAll(`a[onclick="return window.nijor.redirect(this.href)"]`).forEach(tag=>{
                         tag.removeAttribute('onclick');
                         let href = tag.getAttribute('href')

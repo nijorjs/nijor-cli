@@ -10,7 +10,7 @@ module.exports = async function(NijorConfigFile,watch){
         const compileNijorFiles = require('../tools/compiler.js');
         await compileNijorFiles({minify:false});
         // Watch for changes in the src folder
-        if(watch==="-watch" || watch==="-w"){
+        if(watch==="-w"){
             const watcher = chokidar.watch(path.join(process.cwd(),'src'));
             console.print('Watching for changes in the src/ folder .....',[64,226,73]);
             watcher.on('change',async _=> {
