@@ -8,7 +8,6 @@ const cloneProject = require('../src/clone.js');
 const buildProject = require('../src/build.js');
 const compileProject = require('../src/compile.js');
 const serveProject = require('../src/serve.js');
-const generateStaticSite = require('../src/ssg.js');
 const cwDir = process.cwd();
 const NijorConfigFile = path.join(cwDir,'nijor.config.json');
 const TemplateDirectory = path.join(path.dirname(__dirname),'template');
@@ -21,7 +20,6 @@ const commandsMap = {
     "build": ()=> buildProject(NijorConfigFile),
     "compile": ()=> compileProject(NijorConfigFile,userArgs[1]),
     "serve": ()=> serveProject(),
-    "ssg" : ()=> generateStaticSite(NijorConfigFile),
     "-v": ()=> console.log('v4.0'),
     "default": ()=> DefaultCommand()
 }

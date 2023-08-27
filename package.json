@@ -1,6 +1,6 @@
 {
   "name": "@nijor/cli",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "The cli for Nijor Apps !",
   "main": "bin/cli.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "author": "DebAxom",
   "license": "ISC",
   "dependencies": {
-    "@nijor/core": "^2.0.4",
+    "@nijor/core": "^2.0.5",
     "@nijor/nijor-rollup-plugin": "^2.0.1",
     "@rollup/plugin-commonjs": "^23.0.4",
     "@rollup/plugin-image": "^3.0.1",
@@ -23,6 +23,7 @@
     "chokidar": "^3.5.3",
     "esbuild": "^0.19.2",
     "isomorphic-git": "^1.21.0",
+    "jsdom": "^22.1.0",
     "node-fetch": "^2.7.0",
     "rollup": "^3.28.1",
     "rollup-plugin-includepaths": "^0.2.4",

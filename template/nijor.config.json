@@ -1,20 +1,18 @@
 {
     "app":{
-        "name":"app"
+        "name":"app",
+        "type":"ssr",
+        "dir":"build"
     },
     "module":{
         "input":"src/App.js",
-        "output":"app/assets/modules"
+        "output":"assets/modules"
     },
     "styles":{
         "input":"src/styles/style.scss",
-        "output":"app/assets/style.css"
+        "output":"assets/style.css"
     },
     "server":{
-        "port":3000,
-        "appdir":"app"
-    },
-    "ssg":{
-        "dir" : "static-site"
+        "port":3000
     }
 }

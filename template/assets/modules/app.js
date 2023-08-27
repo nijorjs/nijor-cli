@@ -175,6 +175,11 @@ window.nijor.addSlot = function(url,DynamicComponent){
 
 async function RenderRoutes(route){
     if(route.endsWith('/') && route!="/") route = route.substring(0, route.length-1); // convert /route/ to /route
+    if(route.endsWith('.html')) {
+        route = route.slice(0, -5); // convert /route.html to /route
+        history.replaceState(null,null,route); // replace /route.html to /route in the address bar
+
+    }
     if(window.nijor.routes.has(route)) return await window.nijor.routes.get(route)();
     return await RenderRouteWithVars(route,window.nijor.routes);
 }
@@ -216,10 +221,10 @@ var img = "data:image/svg+xml,%3c!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 20010904//
 
 var $header = new window.nijor.component(async function(){
                   
-                  return(`<div class="container" n-scope="ISPg6ufLEg3">
-        <a n-scope="ISPg6ufLEg3" onclick="return window.nijor.redirect(this.href)" href="/"><img src="${img}" n-scope="ISPg6ufLEg3"></a>
-        <div class="nav-bar" n-scope="ISPg6ufLEg3">
-            <a href="https://nijorjs.github.io/docs" class="nav-link" n-scope="ISPg6ufLEg3">Docs</a>
+                  return(`<div class="container" n-scope="Hwyth0e">
+        <a n-scope="Hwyth0e" onclick="return window.nijor.redirect(this.href)" href="/"><img src="${img}" n-scope="Hwyth0e"></a>
+        <div class="nav-bar" n-scope="Hwyth0e">
+            <a href="https://nijorjs.github.io/docs" class="nav-link" n-scope="Hwyth0e">Docs</a>
         </div>
     </div>
 `);
@@ -232,8 +237,8 @@ var $header = new window.nijor.component(async function(){
 
 var $footer = new window.nijor.component(async function(){
                   
-                  return(`<div n-scope="pBFU9cwmkkCwoC95jY">
-        <p n-scope="pBFU9cwmkkCwoC95jY">Nijor Template Website</p>
+                  return(`<div n-scope="aY82O5C4pX9b4uDr">
+        <p n-scope="aY82O5C4pX9b4uDr">Nijor Template Website</p>
     </div>
 `);
               },async function(){
@@ -245,26 +250,26 @@ var $footer = new window.nijor.component(async function(){
 
 var App = new window.nijor.component(async function(){
                   
-                  return(`<headerdei2 n-scope="0ObqPiYEZJKFi0H98"></headerdei2>
-        <div style="margin-top: 5rem;" id="routes-slot-/" n-scope="0ObqPiYEZJKFi0H98">
-    <footerdei2 n-scope="0ObqPiYEZJKFi0H98"></footerdei2>
+                  return(`<headers6ge n-scope="0jSCY8oRZSVBv"></headers6ge>
+        <div style="margin-top: 5rem;" id="routes-slot-/" n-scope="0jSCY8oRZSVBv">
+    <footers6ge n-scope="0jSCY8oRZSVBv"></footers6ge>
 </div>`);
               },async function(){
                 
                 
-              $header.init('headerdei2');
+              $header.init('headers6ge');
               await $header.run();
             
-              $footer.init('footerdei2');
+              $footer.init('footers6ge');
               await $footer.run();
             
                 
                 
             });
 
-window.nijor.setRoute('/404',()=>import('./404-7e8d33bb.js'),'/');
-window.nijor.setRoute('/',()=>import('./index-41173348.js'),'/');
-window.nijor.setRoute('/welcome',()=>import('./welcome-e6570721.js'),'/');
+window.nijor.setRoute('/404',()=>import('./404-268061fd.js'),'/');
+window.nijor.setRoute('/',()=>import('./index-bc6da310.js'),'/');
+window.nijor.setRoute('/welcome',()=>import('./welcome-fa0dab43.js'),'/');
 
 
 App.init('app');

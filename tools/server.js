@@ -9,7 +9,7 @@ const DefaultNijorConfigServer = {
     }
 };
 const NijorJSON = require(path.join(rootDir,'nijor.config.json')) || DefaultNijorConfigServer;
-const staticDir = path.join(rootDir,NijorJSON.server.appdir);
+const staticDir = path.join(rootDir);
 const hostname = '127.0.0.1';
 const port = NijorJSON.server.port;
 
@@ -18,8 +18,6 @@ const server = http.createServer((req, res) => {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
         };
-        
-        const page = fs.readFileSync(path.join(staticDir,'index.html'),'utf-8');
 
         if(req.url=="/index.html"){
             res.writeHead(302,{location:'/'});
@@ -37,12 +35,14 @@ const server = http.createServer((req, res) => {
             if (path.extname(req.url)==='.js') {
                 res.setHeader('Content-Type', 'application/javascript');
             }
+
             res.writeHead(200,headers);
             res.end(data);
         } catch (error) {
+            let data = fs.existsSync(staticDir + req.url+'.html') ?  fs.readFileSync(staticDir + req.url+'.html') : fs.readFileSync(path.join(staticDir,'index.html'),'utf-8');
             res.statusCode = 200;
             res.setHeader('Content-Type', 'text/html');
-            res.end(page);
+            res.end(data);
         }
 });
 

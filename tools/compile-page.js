@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 
 const getBundlePath = script => resolve(dirname(script), '__ssr-bundle.js');
 
-async function CompilePage(template, script, url, ssr=false) {
+async function CompilePage(template, script, url) {
     const {
         host,
         eventName,
@@ -47,15 +47,6 @@ async function CompilePage(template, script, url, ssr=false) {
 
             function resolveHtml() {
                 let html = dom.serialize();
-                if(!ssr){
-                    dom.window.document.body.querySelectorAll(`a[onclick="return window.nijor.redirect(this.href)"]`).forEach(tag=>{
-                        tag.removeAttribute('onclick');
-                        let href = tag.getAttribute('href')
-                        href = href === "/" ? "index" : href;
-                        tag.setAttribute('href',href+'.html');
-                    });
-                html = dom.serialize();
-                }
                 resolve(html);
                 dom.window.close();
             }

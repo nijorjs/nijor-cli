@@ -72,7 +72,7 @@ async function build(options) {
     console.log(`Nijor: Compiling the files.`);
 
     try {
-        fs.rmSync(outputOptions.dir, { recursive: true, force: true }); // Delete the modules folder from app/assets
+        fs.rmSync(outputOptions.dir, { recursive: true, force: true }); // Delete the modules folder from assets
     } catch (error) {}
 
     try {
