@@ -221,10 +221,10 @@ var img = "data:image/svg+xml,%3c!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 20010904//
 
 var $header = new window.nijor.component(async function(){
                   
-                  return(`<div class="container" n-scope="Hwyth0e">
-        <a n-scope="Hwyth0e" onclick="return window.nijor.redirect(this.href)" href="/"><img src="${img}" n-scope="Hwyth0e"></a>
-        <div class="nav-bar" n-scope="Hwyth0e">
-            <a href="https://nijorjs.github.io/docs" class="nav-link" n-scope="Hwyth0e">Docs</a>
+                  return(`<div class="container" n-scope="UrotQR030">
+        <a n-scope="UrotQR030" onclick="return window.nijor.redirect(this.href)" href="/"><img src="${img}" n-scope="UrotQR030"></a>
+        <div class="nav-bar" n-scope="UrotQR030">
+            <a href="https://nijorjs.github.io/docs" class="nav-link" n-scope="UrotQR030">Docs</a>
         </div>
     </div>
 `);
@@ -237,8 +237,8 @@ var $header = new window.nijor.component(async function(){
 
 var $footer = new window.nijor.component(async function(){
                   
-                  return(`<div n-scope="aY82O5C4pX9b4uDr">
-        <p n-scope="aY82O5C4pX9b4uDr">Nijor Template Website</p>
+                  return(`<div n-scope="HL8cC6OujwrnXiKl6Pl">
+        <p n-scope="HL8cC6OujwrnXiKl6Pl">Nijor Template Website</p>
     </div>
 `);
               },async function(){
@@ -250,26 +250,26 @@ var $footer = new window.nijor.component(async function(){
 
 var App = new window.nijor.component(async function(){
                   
-                  return(`<headers6ge n-scope="0jSCY8oRZSVBv"></headers6ge>
-        <div style="margin-top: 5rem;" id="routes-slot-/" n-scope="0jSCY8oRZSVBv">
-    <footers6ge n-scope="0jSCY8oRZSVBv"></footers6ge>
-</div>`);
+                  return(`<headerdks0 n-scope="09EtCONX7EqRsVuDU"></headerdks0>
+        <div style="margin-top: 5rem;" id="routes-slot-/" n-scope="09EtCONX7EqRsVuDU"></div>
+    <footerdks0 n-scope="09EtCONX7EqRsVuDU"></footerdks0>
+`);
               },async function(){
                 
                 
-              $header.init('headers6ge');
+              $header.init('headerdks0');
               await $header.run();
             
-              $footer.init('footers6ge');
+              $footer.init('footerdks0');
               await $footer.run();
             
                 
                 
             });
 
-window.nijor.setRoute('/404',()=>import('./404-268061fd.js'),'/');
-window.nijor.setRoute('/',()=>import('./index-bc6da310.js'),'/');
-window.nijor.setRoute('/welcome',()=>import('./welcome-fa0dab43.js'),'/');
+window.nijor.setRoute('/404',()=>import('./404-48f2a2c4.js'),'/');
+window.nijor.setRoute('/',()=>import('./index-72091313.js'),'/');
+window.nijor.setRoute('/welcome',()=>import('./welcome-c88aa581.js'),'/');
 
 
 App.init('app');

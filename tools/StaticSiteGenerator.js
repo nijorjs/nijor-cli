@@ -29,8 +29,6 @@ function getRouteFromFilePath(filepath){
         url = fragments.join('/') || '/';
     }
     
-    if(url.match(/\[(.*?)\]/)!=null) url = Convert2Regex(url);
-    else url = `${url}`;
     return url;
 }
 
@@ -64,4 +62,10 @@ module.exports = async function GenerateStaticSite(dir,template,script){
         console.log(chalk.rgb(0, 195, 255)("Nijor: ")+chalk.rgb(44, 255, 2)(`Wrote ${url.replace('/','')+'.html'}`));
     }
     console.log(chalk.rgb(0, 195, 255)("Build all pages successfully !"));
+
+    let Code = `let routes = new Map();\n`;
+    global.serverRoutes.forEach((value,key,_)=>Code+= `routes.set(${key},'${value}');\n`);
+    Code+=`module.exports=routes;`;
+    fs.writeFileSync(path.join(dir,'routes.js'),Code);
+    fs.copyFileSync(path.join(__dirname,'prod-server.js'),path.join(dir,'server.js'));
 }

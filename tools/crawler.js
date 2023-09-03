@@ -3,6 +3,7 @@ const path = require('path');
 let Code = "";
 let Files = [];
 let Slots  = ['/'];
+let serverRoutes = new Map();
 
 async function crawlDirectory(directoryPath) {
   const files = await fs.readdir(directoryPath);
@@ -56,6 +57,9 @@ function getRouteFromFilePath(filepath){
 
 function AddRoute(filepath){
     let {url,parentURL} = getRouteFromFilePath(filepath);
+
+    serverRoutes.set(url,filepath.replace(path.join(process.cwd(),'src/pages/'),'').replace('.nijor','.html'));
+
     Code += `window.nijor.setRoute(${url},()=>import('${filepath.replace(/\\/g,'/')}'),'${parentURL}');\n`;
 }
 
@@ -76,6 +80,8 @@ module.exports.crawl = async directory =>{
 
     let App = await fs.readFile(path.join(directory,'App.js'),'utf-8');
     App = App.replace('//@Routes()',Code);
+
+    global.serverRoutes = serverRoutes;
 
     return App;
 }
