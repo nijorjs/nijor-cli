@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const rollup = require('rolldown');
 const includePaths = require('rollup-plugin-includepaths');
-const sass = require('sass');
 const {nodeResolve} = require('@rollup/plugin-node-resolve');
 const cjs = require('@rollup/plugin-commonjs');
 const image = require('@rollup/plugin-image');
