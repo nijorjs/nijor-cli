@@ -1,6 +1,6 @@
 {
   "name": "@nijor/cli",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "The cli for Nijor Apps !",
   "main": "bin/cli.js",
   "scripts": {
