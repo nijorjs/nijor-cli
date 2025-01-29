@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const rollup = require('rollup');
+const rollup = require('rolldown');
 const includePaths = require('rollup-plugin-includepaths');
 const sass = require('sass');
 const {nodeResolve} = require('@rollup/plugin-node-resolve');
@@ -25,11 +25,7 @@ const includePathOptions = {
     extensions: ['.js','.nijor','.svg','.jpg','.png']
 };
 function Style(style){
-    let cssStyle = sass.renderSync({
-        data:style,
-        outputStyle:'compressed'
-    });
-    return cssStyle.css.toString();
+    return style;
 }
 const compilerOptions = {
     styleSheet: path.join(RootPath,NijorJSON.styles.output),

@@ -26,7 +26,7 @@ const commandsMap = {
 
 function DefaultCommand(){
     console.print("Welcome to the Nijor CLI !",[0,195,255]);
-    console.print("version : 4.1",[0,195,255]);
+    console.print("version : 4.2",[0,195,255]);
 }
 
 try {
